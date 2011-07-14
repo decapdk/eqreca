@@ -72,33 +72,15 @@ namespace Resistor_Calculator
             return match;
         }
 
-        public double Parallel(int value1, int value2)
+        public double Parallel(ArrayList args)
         {
-            double calculation = (double)1 / ((double)1 / value1 + (double)1 / value2);
-            return calculation;
-        }
+            double calculation = double.MaxValue;
 
-        public double Parallel(int value1, int value2, int value3)
-        {
-            double calculation = (double)1 / ((double)1 / value1 + (double)1 / value2 + (double)1 / value3);
-            return calculation;
-        }
+            foreach (int a in args)
+            {
+                calculation = (double)1 / ((double)1 / a + (double)1 / calculation);
+            }
 
-        public double Parallel(int value1, int value2, int value3, int value4)
-        {
-            double calculation = (double)1 / ((double)1 / value1 + (double)1 / value2 + (double)1 / value3 + (double)1 / value4);
-            return calculation;
-        }
-
-        public double Parallel(int value1, int value2, int value3, int value4, int value5)
-        {
-            double calculation = (double)1 / ((double)1 / value1 + (double)1 / value2 + (double)1 / value3 + (double)1 / value4 + (double)1 / value5);
-            return calculation;
-        }
-
-        public double Parallel(int value1, int value2, int value3, int value4, int value5, int value6)
-        {
-            double calculation = (double)1 / ((double)1 / value1 + (double)1 / value2 + (double)1 / value3 + (double)1 / value4 + (double)1 / value5 + (double)1 / value6);
             return calculation;
         }
 
@@ -122,7 +104,10 @@ namespace Resistor_Calculator
                             foreach (int j in erow_values)
                             {
                                 //results.Add(Parallel(i, j));
-                                result = Parallel(i, j);
+                                ArrayList tmp = new ArrayList();
+                                tmp.Add(i);
+                                tmp.Add(j);
+                                result = Parallel(tmp);
                                 d = Math.Abs(value - result);
                                 if (d <= bestDiviance)
                                 {
@@ -145,7 +130,11 @@ namespace Resistor_Calculator
                             {
                                 foreach (int h in erow_values)
                                 {//results.Add(Parallel(i, j));
-                                    result = Parallel(i, j, h);
+                                    ArrayList tmp = new ArrayList();
+                                    tmp.Add(i);
+                                    tmp.Add(j);
+                                    tmp.Add(h);
+                                    result = Parallel(tmp);
                                     d = Math.Abs(value - result);
                                     if (d <= bestDiviance)
                                     {
@@ -173,7 +162,12 @@ namespace Resistor_Calculator
                                 {
                                     foreach (int k in erow_values)
                                     {
-                                        result = Parallel(i, j, h, k);
+                                        ArrayList tmp = new ArrayList();
+                                        tmp.Add(i);
+                                        tmp.Add(j);
+                                        tmp.Add(h);
+                                        tmp.Add(k);
+                                        result = Parallel(tmp);
                                         d = Math.Abs(value - result);
                                         if (d <= bestDiviance)
                                         {

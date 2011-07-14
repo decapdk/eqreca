@@ -12,6 +12,7 @@ namespace Resistor_Calculator
     public partial class Main : Form
     {
         ResistorCalc calculator = new ResistorCalc();
+        ArrayList workerResults = new ArrayList();
         
         public Main()
         {
@@ -60,47 +61,45 @@ namespace Resistor_Calculator
             ArrayList results = new ArrayList();
             int resistorcount = Convert.ToInt32(cbParallelCount.Text);
             lbResults.Items.Clear();
-            
+
+            WorkerArgs workargs = new WorkerArgs();
+
+            workargs.Count = resistorcount;
+            workargs.ResistorValue = Convert.ToInt32(tbValue.Text);
+
             switch(cbStdRows.Text)
             {
                 case "E12":
-                    results = calculator.Single2Parallel(Convert.ToInt32(tbValue.Text), resistorcount, calculator.E12);
+                    //results = calculator.Single2Parallel(Convert.ToInt32(tbValue.Text), resistorcount, calculator.E12);
+                    workargs.E_Row = calculator.E12;
                     break;
                 case "E24":
-                    results = calculator.Single2Parallel(Convert.ToInt32(tbValue.Text), resistorcount, calculator.E24);
+                    //results = calculator.Single2Parallel(Convert.ToInt32(tbValue.Text), resistorcount, calculator.E24);
+                    workargs.E_Row = calculator.E24;
                     break;
                 case "E48":
-                    results = calculator.Single2Parallel(Convert.ToInt32(tbValue.Text), resistorcount, calculator.E48);
+                    //results = calculator.Single2Parallel(Convert.ToInt32(tbValue.Text), resistorcount, calculator.E48);
+                    workargs.E_Row = calculator.E48;
                     break;
                 case "E96":
-                    results = calculator.Single2Parallel(Convert.ToInt32(tbValue.Text), resistorcount, calculator.E96);
+                    //results = calculator.Single2Parallel(Convert.ToInt32(tbValue.Text), resistorcount, calculator.E96);
+                    workargs.E_Row = calculator.E96;
                     break;
             }
 
-            foreach (object i in results)
-                lbResults.Items.Add(i);
+            backgroundWorker1.RunWorkerAsync(workargs);
 
-            switch (resistorcount)
-            {
-                case 2:
-                    tbResult.Text = calculator.Parallel((int)results[0], (int)results[1]).ToString();
-                    break;
-                case 3:
-                    tbResult.Text = calculator.Parallel((int)results[0], (int)results[1],(int)results[2]).ToString();
-                    break;
-                case 4:
-                    tbResult.Text = calculator.Parallel((int)results[0], (int)results[1], (int)results[2],(int)results[3]).ToString();
-                    break;
+            //foreach (object i in results)
+            //    lbResults.Items.Add(i);
 
-            }
+            //tbResult.Text = calculator.Parallel(results).ToString();
 
-            lblPercent.Text = calculator.CalcPercent(Convert.ToDouble(tbResult.Text), Convert.ToDouble(tbValue.Text));
+            //lblPercent.Text = calculator.CalcPercent(Convert.ToDouble(tbResult.Text), Convert.ToDouble(tbValue.Text));
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
             ArrayList values = new ArrayList();
-            double par_val = -1;
 
             if (tbRes1.Text != "")
                 values.Add(Convert.ToInt32(tbRes1.Text));
@@ -114,30 +113,35 @@ namespace Resistor_Calculator
                 values.Add(Convert.ToInt32(tbRes5.Text));
             if (tbRes6.Text != "")
                 values.Add(Convert.ToInt32(tbRes6.Text));
-
-            switch (values.Count)
-            {
-                case 1:
-                    par_val = Convert.ToDouble(values[0]);
-                    break;
-                case 2:
-                    par_val = calculator.Parallel((int)values[0], (int)values[1]);
-                    break;
-                case 3:
-                    par_val = calculator.Parallel((int)values[0], (int)values[1], (int)values[2]);
-                    break;
-                case 4:
-                    par_val = calculator.Parallel((int)values[0], (int)values[1], (int)values[2], (int)values[3]);
-                    break;
-                case 5:
-                    par_val = calculator.Parallel((int)values[0], (int)values[1], (int)values[2], (int)values[3], (int)values[4]);
-                    break;
-                case 6:
-                    par_val = calculator.Parallel((int)values[0], (int)values[1], (int)values[2], (int)values[3], (int)values[4], (int)values[5]);
-                    break;
-            }
-
-            tbParResult.Text = par_val.ToString("0.00");
+            
+            tbParResult.Text = calculator.Parallel(values).ToString("0.00");
         }
+
+        private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
+        {
+            WorkerArgs args = e.Argument as WorkerArgs;
+
+            workerResults = calculator.Single2Parallel(args.ResistorValue, args.Count, args.E_Row);
+        }
+
+        private void backgroundWorker1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            foreach (object i in workerResults)
+                lbResults.Items.Add(i);
+
+            tbResult.Text = calculator.Parallel(workerResults).ToString();
+
+            lblPercent.Text = calculator.CalcPercent(Convert.ToDouble(tbResult.Text), Convert.ToDouble(tbValue.Text));
+        }
+
+   
+    }
+
+    class WorkerArgs
+    {
+        public int ResistorValue{ get; set; }
+        public int Count{ get; set; }
+        public int[] E_Row{ get; set; }
     }
 }
+
