@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Windows.Forms;
 
-namespace Resistor_Calculator
+namespace EqReCa
 {
     static class Program
     {

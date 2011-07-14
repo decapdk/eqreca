@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual C# Express 2010
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Resistor Calculator", "Resistor Calculator\Resistor Calculator.csproj", "{AC43F11F-9448-4DE6-A268-A816A0CF0BD0}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EqReCa", "Resistor Calculator\EqReCa.csproj", "{AC43F11F-9448-4DE6-A268-A816A0CF0BD0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

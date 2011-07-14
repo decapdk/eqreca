@@ -1,4 +1,4 @@
-﻿namespace Resistor_Calculator
+﻿namespace EqReCa
 {
     partial class Main
     {
@@ -365,7 +365,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Main";
-            this.Text = "Resistor Calculator (by René Haunstrup)";
+            this.Text = "Equivalent Resistor Calculator (by René Haunstrup)";
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.tabControl1.ResumeLayout(false);
