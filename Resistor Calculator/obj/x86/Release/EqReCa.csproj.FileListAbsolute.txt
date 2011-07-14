@@ -1,0 +1,14 @@
+C:\Documents and Settings\rhp\My Documents\Projects\eqreca@googlecode\Resistor Calculator\obj\x86\Release\ResolveAssemblyReference.cache
+C:\Documents and Settings\rhp\My Documents\Projects\eqreca@googlecode\Resistor Calculator\obj\x86\Release\GenerateResource-ResGen.read.1.tlog
+C:\Documents and Settings\rhp\My Documents\Projects\eqreca@googlecode\Resistor Calculator\obj\x86\Release\GenerateResource-ResGen.write.1.tlog
+C:\Documents and Settings\rhp\My Documents\Projects\eqreca@googlecode\Resistor Calculator\bin\Release\EqReCa.exe.config
+C:\Documents and Settings\rhp\My Documents\Projects\eqreca@googlecode\Resistor Calculator\bin\Release\EqReCa.exe.manifest
+C:\Documents and Settings\rhp\My Documents\Projects\eqreca@googlecode\Resistor Calculator\bin\Release\EqReCa.application
+C:\Documents and Settings\rhp\My Documents\Projects\eqreca@googlecode\Resistor Calculator\bin\Release\EqReCa.exe
+C:\Documents and Settings\rhp\My Documents\Projects\eqreca@googlecode\Resistor Calculator\bin\Release\EqReCa.pdb
+C:\Documents and Settings\rhp\My Documents\Projects\eqreca@googlecode\Resistor Calculator\obj\x86\Release\EqReCa.Main.resources
+C:\Documents and Settings\rhp\My Documents\Projects\eqreca@googlecode\Resistor Calculator\obj\x86\Release\EqReCa.Properties.Resources.resources
+C:\Documents and Settings\rhp\My Documents\Projects\eqreca@googlecode\Resistor Calculator\obj\x86\Release\EqReCa.exe.manifest
+C:\Documents and Settings\rhp\My Documents\Projects\eqreca@googlecode\Resistor Calculator\obj\x86\Release\EqReCa.application
+C:\Documents and Settings\rhp\My Documents\Projects\eqreca@googlecode\Resistor Calculator\obj\x86\Release\EqReCa.exe
+C:\Documents and Settings\rhp\My Documents\Projects\eqreca@googlecode\Resistor Calculator\obj\x86\Release\EqReCa.pdb

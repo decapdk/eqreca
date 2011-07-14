@@ -7,7 +7,7 @@ using System.Text;
 using System.Windows.Forms;
 using System.Collections;
 
-namespace Resistor_Calculator
+namespace EqReCa
 {
     public partial class Main : Form
     {
